@@ -11,7 +11,6 @@ public class PostContentService {
     private PostContent postContent = new PostContent();
 
     public PostContent getContent(String url) {
-        System.out.println(url);
         Connection connection = Jsoup.connect(url);
         try {
             Document document = connection.get();
