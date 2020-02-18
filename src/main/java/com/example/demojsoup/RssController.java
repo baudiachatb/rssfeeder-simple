@@ -16,17 +16,17 @@ public class RssController {
 
 
     @GetMapping(value = "/rsscontent")
-    public List<RssContent> getRssContent(){
+    public List<RssContent> getRssContent() {
         return facadeService.rssContentService.getAllRssContent();
     }
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
+
     @GetMapping("/content")
-    public List<Content> getContent(@RequestParam(value = "url")String url){
-        return facadeService.contentService.getListPost("https://vnexpress.net/"+url);
+    public List<Content> getContent(@RequestParam(value = "url") String url) {
+        return facadeService.contentService.getListPost("https://vnexpress.net/" + url);
     }
+
     @GetMapping("/post")
-    public PostContent getPost(@RequestParam(value = "url") String url){
-        System.out.println(url);
+    public PostContent getPost(@RequestParam(value = "url") String url) {
         return facadeService.postContentService.getContent(url);
     }
 }
