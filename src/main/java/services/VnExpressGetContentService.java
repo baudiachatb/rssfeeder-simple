@@ -46,6 +46,8 @@ public class VnExpressGetContentService implements GetContent {
             Element title = document.getElementsByTag("h1").first();
             List<Element> listImage = element.getElementsByTag("table");
             Element description = element.getElementsByClass("description").first();
+            Element firstContent = element.getElementsByClass("Normal").first();
+            firstContent.removeAttr("style");
             element.getElementsByClass("clearfix").remove();
             Element el = new Element("div");
             if (!listImage.isEmpty()) {
@@ -59,12 +61,18 @@ public class VnExpressGetContentService implements GetContent {
                 el.appendChild(title);
             }
             if(description != null){
-                el.appendChild(description);
+                Element h3 = new Element("h2");
+                h3.appendText(description.text());
+                el.appendChild(h3);
+            }
+            if(firstContent != null){
+                el.appendChild(firstContent);
             }
 
 //            el.appendChild(element);
             postContent.setTieuDe(title.text());
             postContent.setContent(el.toString());
+//            postContent.setContent(document.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }

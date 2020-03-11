@@ -44,6 +44,7 @@ public class DantriGetContentService implements GetContent {
             Element element = document.getElementById("ctl00_IDContent_Tin_Chi_Tiet") != null ?
                     document.getElementById("ctl00_IDContent_Tin_Chi_Tiet") : document.getElementsByClass("sidebar_1").first();
             Element el1 = document.getElementsByTag("h1").first();
+            Element newContent = document.getElementById("divNewsContent").getElementsByTag("p").first();
             postContent.setTieuDe(el1.text());
             element.getElementsByClass("fl").remove();
             element.getElementsByClass("box26").first().remove();
@@ -68,6 +69,9 @@ public class DantriGetContentService implements GetContent {
                 }
 
                 content.appendChild(description);
+            }
+            if(newContent != null){
+                content.appendChild(newContent);
             }
 //            content.appendChild(element);
             postContent.setContent(content.toString());
